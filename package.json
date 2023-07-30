@@ -1,16 +1,26 @@
 {
-  "dependencies": {
-    "mongodb": "^5.7.0",
-    "mongodb-legacy": "npm:mongodb@4.1",
-    "mssql": "^9.1.1",
-    "mysql": "^2.18.1",
-    "oracledb": "^5.5.0",
-    "pg": "^8.11.1",
-    "reflect-metadata": "^0.1.13",
-    "sqlite": "^5.0.1",
-    "typeorm": "^0.3.17"
-  },
-  "devDependencies": {
-    "@types/node": "^20.4.5"
-  }
+   "name": "wekan",
+   "version": "0.0.1",
+   "description": "WeKan Node.js 20 with TypeORM",
+   "type": "commonjs",
+   "devDependencies": {
+      "ts-node": "10.7.0",
+      "@types/node": "^16.11.10",
+      "typescript": "4.5.2"
+   },
+   "dependencies": {
+      "typeorm": "0.3.17",
+      "reflect-metadata": "^0.1.13",
+      "mongodb": "^5.2.0",
+      "mongodb-legacy": "npm:mongodb@4.1",
+      "mssql": "^9.1.1",
+      "mysql": "^2.18.1",
+      "oracledb": "^5.5.0",
+      "pg": "^8.11.1",
+      "sqlite": "^5.0.1"
+   },
+   "scripts": {
+      "start": "ts-node src/index.ts",
+      "typeorm": "typeorm-ts-node-commonjs"
+   }
 }
