@@ -1,6 +1,6 @@
 const { MongoClient: MongoClientLegacy } = require("mongodb-legacy");
 const { MongoClient } = require("mongodb");
-import "reflect-metadata";
+//import "reflect-metadata";
 
 // Replace the placeholder with your Atlas connection string
 // FerretDB: const uri = "mongodb://127.0.0.1:27010/wekan";
