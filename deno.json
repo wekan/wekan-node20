@@ -1,0 +1,28 @@
+{
+  "imports": {
+    "jquery-ui-touch-punch": "npm:@rwap/jquery-ui-touch-punch@^1.0.11",
+    "dompurify": "npm:dompurify@^3.0.5",
+    "exceljs": "npm:exceljs@^4.3.0",
+    "file-type": "npm:file-type@^18.5.0",
+    "filesize": "npm:filesize@^10.0.8",
+    "jquery": "npm:jquery@^3.7.0",
+    "jquery-ui": "npm:jquery-ui@^1.13.2",
+    "jszip": "npm:jszip@^3.10.1",
+    "ldapjs": "npm:ldapjs@^3.0.4",
+    "markdown-it": "npm:markdown-it@^13.0.1",
+    "markdown-it-emoji": "npm:markdown-it-emoji@^2.0.2",
+    "markdown-it-mathjax3": "npm:markdown-it-mathjax3@^4.3.2",
+    "minio": "npm:minio@^7.1.1",
+    "mongodb": "npm:mongodb@^5.2.0",
+    "mongoclientlegacy": "npm:mongodb@^4.1/MongoClient/",
+    "mssql": "npm:mssql@^9.1.1",
+    "mysql": "npm:mysql@^2.18.1",
+    "nodemailer": "npm:nodemailer@^6.9.4",
+    "oracledb": "npm:oracledb@^5.5.0",
+    "papaparse": "npm:papaparse@^5.4.1",
+    "pg": "npm:pg@^8.11.1",
+    "reflect-metadata": "npm:reflect-metadata@^0.1.13",
+    "sqlite": "npm:sqlite@^5.0.1",
+    "typeorm": "npm:typeorm@^0.3.17"
+   }
+}

@@ -1,5 +1,14 @@
-const { MongoClient: MongoClientLegacy } = require("mongodb-legacy");
-const { MongoClient } = require("mongodb");
+// Node.js 20 imports using package.json
+//const { MongoClient: MongoClientLegacy } = require("mongodb-legacy");
+//const { MongoClient } = require("mongodb");
+
+// Deno imports using deno.json
+import { MongoClient as MongoClientLegacy } from "mongodb-legacy";
+import { MongoClient } from "mongodb";
+
+// Code below works bots for Node.js 20 and Deno
+
+// Not used import
 //import "reflect-metadata";
 
 // Replace the placeholder with your Atlas connection string
