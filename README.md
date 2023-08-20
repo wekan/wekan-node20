@@ -1,6 +1,16 @@
-# WeKan Node.js 20 and TypeORM
+# WeKan Node.js 20, Deno and TypeORM
 
 - Node.js 20
+- Deno
+  - Linux
+    - x64
+    - arm64
+    - s390x does not work yet: https://github.com/denoland/deno/issues/20212
+  - Windows
+    - x64
+  - Mac
+    - x64
+    - arm64
 - TypeORM
 
 # Databases
