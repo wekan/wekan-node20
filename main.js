@@ -39,13 +39,13 @@ const ferretclient = new MongoClient(ferreturi);
 // FerretDB SQLite:
 const sqlitedbname = "wekan";
 const sqlitecollectionname = "users";
-const sqliteuri = "mongodb://127.0.0.1:27017";
+const sqliteuri = "mongodb://127.0.0.1:27011";
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const sqliteclient = new MongoClient(sqliteuri);
 
 async function run() {
   try {
-    // MongoDB 3.2.22:
+    // MongoDB 3.2.21:
     // Connect the client to the server (optional starting in v4.7)
     await legacyclient.connect();
     // Send a ping to confirm a successful connection
