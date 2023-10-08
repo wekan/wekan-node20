@@ -1,1 +1,1 @@
-bun build --compile ./main-bun.js --outfile=wekan-bun-linux-x64
+bun build --compile ./main.js --outfile=wekan-bun-linux-x64

@@ -1,1 +1,1 @@
-bun main-bun.js
+bun main.js
