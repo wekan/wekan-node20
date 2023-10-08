@@ -1,12 +1,12 @@
 //if (typeof Deno !== 'undefined') {
-  // Deno imports using deno.json
-//  import { MongoClient } from "mongodb";
-//  import { MongoClient as MongoClientLegacy } from "mongodb-legacy";
+// Deno imports using deno.json
+import { MongoClient } from "mongodb";
+import { MongoClient as MongoClientLegacy } from "mongodb-legacy";
 //} else {
 
 // Node.js and Bun imports using package.json
-const { MongoClient } = require("mongodb");
-const { MongoClient: MongoClientLegacy } = require("mongodb-legacy");
+//const { MongoClient } = require("mongodb");
+//const { MongoClient: MongoClientLegacy } = require("mongodb-legacy");
 //}
 
 // Code below works bots for Node.js 20 and Deno
