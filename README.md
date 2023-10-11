@@ -5,7 +5,7 @@
 
 Features | Node.js 20 | Bun | Deno | Details
 ------------ | ------------- | ------------- | ------------- | -------------
-Single Executeable | [TODO](https://nodejs.org/dist/latest-v20.x/docs/api/single-executable-applications.html) | [Yes](https://bun.sh/docs/bundler/executables) | [Yes](https://docs.deno.com/runtime/manual/tools/compiler). Deno can crosscompile some binaries. |
+Single Executeable | [No](https://nodejs.org/dist/latest-v20.x/docs/api/single-executable-applications.html). Can not include npm modules yet. | [Yes](https://bun.sh/docs/bundler/executables) | [Yes](https://docs.deno.com/runtime/manual/tools/compiler). Deno can crosscompile some binaries. |
 Production use | Yes, has [traceability](https://changelog.com/jsparty/294) and [many CPU/OS](https://nodejs.org/dist/) | No | No | 
 Linux amd64 | Runs | SE 92.1 MB | SE 365 MB. "Node.js compatibility layer" [includes Node.js](https://changelog.com/jsparty/294), so binaries are bigger. |
 Linux arm64 | Runs | SE 84.4 MB | SE 1.35 GB [Too big size is bug](https://github.com/denoland/deno/issues/1846) | https://github.com/wekan/wekan/wiki/Raspberry-Pi
