@@ -9,7 +9,7 @@ Single Executeable | [TODO](https://nodejs.org/dist/latest-v20.x/docs/api/single
 Production use | Yes, has [traceability](https://changelog.com/jsparty/294) and [many CPU/OS](https://nodejs.org/dist/) | No | No | 
 Linux amd64 | Runs | SE 92.1 MB | SE 365 MB. "Node.js compatibility layer" [includes Node.js](https://changelog.com/jsparty/294), so binaries are bigger. |
 Linux arm64 | Runs | SE 84.4 MB | SE 1.35 GB [Too big size is bug](https://github.com/denoland/deno/issues/1846) | https://github.com/wekan/wekan/wiki/Raspberry-Pi
-Linux s390x | Runs | [No](https://github.com/oven-sh/bun/issues/2632). Compiling fails, see below | https://github.com/wekan/wekan/wiki/s390x
+Linux s390x | Runs | [No](https://github.com/oven-sh/bun/issues/2632) | [No](https://github.com/denoland/deno/issues/20212) | https://github.com/wekan/wekan/wiki/s390x
 Windows amd64 | Runs | No | SE 324 MB | https://github.com/wekan/wekan/wiki/Offline
 Mac amd64 | Runs | No. "Your shell is running in Rosetta 2. Downloading bun for darwin-aarch64 instead" | SE 348 MB | https://github.com/wekan/wekan/wiki/Mac
 Mac arm64 | Runs | SE 49.9 MB | SE 345 MB | https://github.com/wekan/wekan/wiki/Mac
@@ -17,7 +17,6 @@ Mac arm64 | Runs | SE 49.9 MB | SE 345 MB | https://github.com/wekan/wekan/wiki/
 ## Trying to compile LLVM (for Zig and Bun) at s390x fails
 
 - Trying: [Compile LLVM](https://github.com/ziglang/zig/wiki/How-to-build-LLVM,-libclang,-and-liblld-from-source#release), to [compile Zig](https://github.com/ziglang/zig/wiki/Building-Zig-From-Source#instructions), to [compile Bun](https://bun.sh/docs/project/development) | [No](https://github.com/denoland/deno/issues/20212)
-
 - Trying to compile LLVM (for Zig and Bun) ends with this error at s390x VM that has 8 GB RAM:
 
 ```
