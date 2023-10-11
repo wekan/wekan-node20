@@ -36,6 +36,7 @@ Mac arm64 | ? | Yes | ?
 - FerretDB
   - Website https://www.ferretdb.io
   - FerretDB is MongoDB 6.x wire protocol compatible proxy to PostgreSQL or SQLite. Replaces MongoDB.
+  - https://blog.ferretdb.io/ferretdb-v1-10-production-ready-sqlite/
   - Improve compatibility with real specific apps and libraries https://github.com/FerretDB/FerretDB/issues/5
   - FerretDB WeKan issue https://github.com/FerretDB/FerretDB/issues/1752
   - At this repo docker-compose.yml:
