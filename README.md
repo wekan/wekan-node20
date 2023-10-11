@@ -11,9 +11,9 @@
     - Deno arm
 
 Features | Node.js 20 | Bun | Deno | Details
------------- | ------------- | ------------- | -------------
-Single Executeable | [TODO](https://nodejs.org/dist/latest-v20.x/docs/api/single-executable-applications.html) | [Yes](https://bun.sh/docs/bundler/executables) | [Yes](https://docs.deno.com/runtime/manual/tools/compiler)
-Linux amd64 | Runs | SE 93.3 MB | SE 365 MB 
+------------ | ------------- | ------------- | ------------- | -------------
+Single Executeable | [TODO](https://nodejs.org/dist/latest-v20.x/docs/api/single-executable-applications.html) | [Yes](https://bun.sh/docs/bundler/executables) | [Yes](https://docs.deno.com/runtime/manual/tools/compiler) |
+Linux amd64 | Runs | SE 93.3 MB | SE 365 MB |
 Linux arm64 | Runs | SE 85.1 MB | SE 1.35 GB [Too big size is bug](https://github.com/denoland/deno/issues/1846) | https://github.com/wekan/wekan/wiki/Raspberry-Pi
 Linux s390x | Runs | No | [No](https://github.com/denoland/deno/issues/20212) | https://github.com/wekan/wekan/wiki/s390x
 Windows amd64 | Runs | No | SE 324 MB | https://github.com/wekan/wekan/wiki/Offline
