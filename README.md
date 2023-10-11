@@ -1,6 +1,6 @@
 # WeKan Node.js 20, Bun and Deno
 
-- SE = Single Executeable, files at https://github.com/wekan/wekan-node20/releases
+- SE = Single Executeable at https://github.com/wekan/wekan-node20/releases
 - Runs = Does run, but no Single Executeable
 
 Features | Node.js 20 | Bun | Deno | Details
