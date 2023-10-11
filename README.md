@@ -68,6 +68,10 @@ compilation terminated.
 ninja: build stopped: subcommand failed.
 ```
 
+## Trying to compile Deno for s390x fails
+
+https://github.com/denoland/deno/issues/20212
+
 ## Database servers
 
 - FerretDB Linux amd64/armv7/arm64 https://github.com/ferretdb/FerretDB/pkgs/container/ferretdb
