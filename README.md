@@ -1,3 +1,34 @@
+## Description of this database connecting test
+
+- main.js runs database connecting test to:
+  - MongoDB 3.x
+  - MongoDB 6.x
+  - FerretDB PostgreSQL
+  - FerretDB SQLite
+- At package.json is many packages, that are also used at https://github.com/wekan/wekan
+- main.js and npm packages are compiled to single executeables with Bun and Deno.
+  - Not possible yet with Node.js, because Node.js can not yet include npm packages to executeable.
+- This test is to see, what works at each CPU/OS. This is only database connect test, not yet any other features.
+
+## Code differences between Node.js, Bun and Deno
+
+- Only difference is, how to do imports. Other Javascript code is exactly same in Node.js 20, Bun and Deno.
+- Node.js and Bun use this syntax for imports at `main.js` https://github.com/wekan/wekan-node20/blob/main/main.js#L7-L9
+
+```
+// Node.js and Bun imports using package.json
+const { MongoClient } = require("mongodb");
+const { MongoClient: MongoClientLegacy } = require("mongodb-legacy");
+```
+
+- Deno uses different syntax for imports at `main-deno.js` https://github.com/wekan/wekan-node20/blob/main/main-deno.js#L2-L4
+
+```
+// Deno imports using deno.json
+import { MongoClient } from "mongodb";
+import { MongoClient as MongoClientLegacy } from "mongodb-legacy";
+```
+
 ## WeKan Node.js 20, Bun and Deno
 
 - SE = Single Executeable at https://github.com/wekan/wekan-node20/releases
