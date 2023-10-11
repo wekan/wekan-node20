@@ -14,6 +14,21 @@ Windows amd64 | Runs | No | SE 324 MB | https://github.com/wekan/wekan/wiki/Offl
 Mac amd64 | Runs | No. "Your shell is running in Rosetta 2. Downloading bun for darwin-aarch64 instead" | SE 348 MB | https://github.com/wekan/wekan/wiki/Mac
 Mac arm64 | Runs | SE 49.9 MB | SE 345 MB | https://github.com/wekan/wekan/wiki/Mac
 
+# Database servers
+
+- FerretDB Linux amd64/armv7/arm64 https://github.com/ferretdb/FerretDB/pkgs/container/ferretdb
+- Some not checked yet, does it exist?
+
+Features | MongoDB 3.x | MongoDB 6.x | FerretDB
+------------ | ------------- | ------------- | -------------
+Linux amd64 | Yes | Yes | Yes
+Linux armv7 | ? | No | Yes
+Linux arm64 | ? | Yes | Yes
+Linux s390x | ? | ? | ?
+Windows amd64 | ? | Yes | ?
+Mac amd64 | ? | Yes | ?
+Mac arm64 | ? | Yes | ?
+
 # Database drivers at main.js
 
 - MongoDB 3.x, to be compatible with WeKan Snap Stable migrations, and https://sandstorm.io MongoDB 3.0
