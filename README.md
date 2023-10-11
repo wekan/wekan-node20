@@ -109,10 +109,11 @@ Mac arm64 | ? | Yes | ?
 - MSSQL
 - Oracle
 
-## Database abstraction layers
+## DAL and ORM
 
+- DAL (Database Access Layer) and ORM (Object Relational Mapper)
 - Generating database queries from same syntax to many different database syntax
-- If using ot is improvement, not too much size or slowness added
+- If using DAL/ORM is improvement, not too much size or slowness added
 - Those that also support CloudFlare D1 SQLite database
   - Kysely, at bottom of page https://github.com/wekan/wekan/wiki/WeKan-Multiverse-Roadmap
   - Feathers-kysely
