@@ -19,6 +19,7 @@ Mac arm64 | Runs | SE 49.9 MB | SE 345 MB | https://github.com/wekan/wekan/wiki/
 - MongoDB 3.x, to be compatible with WeKan Snap Stable migrations, and https://sandstorm.io MongoDB 3.0
 - MongoDB 6.x, to be compatible with newest Meteor
 - FerretDB
+  - Website https://www.ferretdb.io
   - FerretDB is MongoDB 6.x wire protocol compatible proxy to PostgreSQL or SQLite. Replaces MongoDB.
   - Improve compatibility with real specific apps and libraries https://github.com/FerretDB/FerretDB/issues/5
   - FerretDB WeKan issue https://github.com/FerretDB/FerretDB/issues/1752
