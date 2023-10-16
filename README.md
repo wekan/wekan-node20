@@ -47,6 +47,7 @@ Mac arm64 | Runs | SE 49.9 MB | SE 345 MB | https://github.com/wekan/wekan/wiki/
 
 ## Trying to compile LLVM (for Zig and Bun) at s390x fails
 
+- There is no precompiled binaries of Zig and Bun https://github.com/oven-sh/bun/issues/2632
 - Trying: [Compile LLVM](https://github.com/ziglang/zig/wiki/How-to-build-LLVM,-libclang,-and-liblld-from-source#release), to [compile Zig](https://github.com/ziglang/zig/wiki/Building-Zig-From-Source#instructions), to [compile Bun](https://bun.sh/docs/project/development).
 - Trying to compile LLVM (for Zig and Bun) ends with this error at s390x VM that has 8 GB RAM:
 
@@ -70,7 +71,9 @@ ninja: build stopped: subcommand failed.
 
 ## Trying to compile Deno for s390x fails
 
-https://github.com/denoland/deno/issues/20212
+- There is no ninja_gn binaries for s390x https://github.com/denoland/ninja_gn_binaries
+- Rust ring (a crypto dependency) does not support s390x.
+- https://github.com/denoland/deno/issues/20212#issuecomment-1756663943
 
 ## Database servers
 
