@@ -12,7 +12,7 @@
     - https://github.com/FerretDB/FerretDB/issues/175
 
 
-#### 1) Starting this FerretDB/SQLite with:
+#### 1) Starting this FerretDB/SQLite
 
 ```
 git clone https://github.com/wekan/ferretdb
@@ -22,7 +22,7 @@ cd ferretdb
 docker compose up -d
 ```
 
-#### 2) Manually create oplog collection:
+#### 2) Manually create OpLog collection
 
 ```
 mongosh
@@ -32,7 +32,7 @@ use local
 db.createCollection('oplog.rs', { capped: true, size: 536870912 })
 ```
 
-#### 3) Build wekan:
+#### 3) Build WeKan:
 
 ```
 git clone https://github.com/wekan/wekan
@@ -52,7 +52,7 @@ cd wekan
 3
 ```
 
-#### 4) Edit start-wekan.sh have these settings for oplog:
+#### 4) Edit start-wekan.sh have these settings for OpLog
 
 ```
 cd .build/bundle
@@ -70,13 +70,13 @@ node main.js
 cd ..
 ```
 
-#### 5) Start wekan bundle:
+#### 5) Start WeKan bundle:
 
 ```
 ./start-wekan.sh
 ```
 
-#### 6) Look that there is something at oplog:
+#### 6) Look that there is something at OpLog:
 
 ```
 mongosh
@@ -104,19 +104,18 @@ db.boards.find()
 db.cards.find()
 ```
 
-#### 8) Currently working is:
+#### 8) Currently working with FerretDB
 
 - Registering new user at https://localhost:2000/sign-up
 - Login at https://localhost:2000/sign-in
 - Add new user at right top username / Admin Panel / People / People
 
-#### 9) Currently not working is:
+#### 9) Currently not working with FerretDB
 
 - Adding attachments related collections to GridFS
 - Adding new board, errors about matchElement and userId
-#    
 
-#### Later, try to fix to create oplog at start:
+#### TODO: Later, try to fix this to create OpLog collection at start
 
 docker-compose.yml
 ```
