@@ -16,9 +16,9 @@ Related:
 #### 1) Starting this FerretDB/SQLite with:
 
 ```
-git clone https://github.com/wekan/wekan-node20
+git clone https://github.com/wekan/ferretdb
 
-cd wekan-node20
+cd ferretdb
 
 docker compose up -d
 ```
@@ -146,7 +146,7 @@ ferretdb-sqlite-setup:
 #### Code differences between Node.js, Bun and Deno
 
 - Only difference is, how to do imports. Other Javascript code is exactly same in Node.js 20, Bun and Deno.
-- Node.js and Bun use this syntax for imports at `main.js` https://github.com/wekan/wekan-node20/blob/main/main.js#L7-L9
+- Node.js and Bun use this syntax for imports at `main.js` https://github.com/wekan/ferretdb/blob/main/main.js#L7-L9
 
 ```
 // Node.js and Bun imports using package.json
@@ -154,7 +154,7 @@ const { MongoClient } = require("mongodb");
 const { MongoClient: MongoClientLegacy } = require("mongodb-legacy");
 ```
 
-- Deno uses different syntax for imports at `main-deno.js` https://github.com/wekan/wekan-node20/blob/main/main-deno.js#L2-L4
+- Deno uses different syntax for imports at `main-deno.js` https://github.com/wekan/ferretdb/blob/main/main-deno.js#L2-L4
 
 ```
 // Deno imports using deno.json
@@ -164,7 +164,7 @@ import { MongoClient as MongoClientLegacy } from "mongodb-legacy";
 
 #### WeKan Node.js 20, Bun and Deno
 
-- SE = Single Executeable at https://github.com/wekan/wekan-node20/releases
+- SE = Single Executeable at https://github.com/wekan/ferretdb/releases
 - Runs = Does run, but no Single Executeable
 
 Features | Node.js 20 | Bun | Deno | Details
