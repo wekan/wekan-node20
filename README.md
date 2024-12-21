@@ -6,6 +6,7 @@ Related:
 - Achieve compatibility with WeKan
   - https://github.com/FerretDB/FerretDB/issues/1752
 - Improve compatibility with real specific apps and libraries
+  - https://github.com/FerretDB/FerretDB/issues/5 
 - High level Roadmap to end of Q4 2024:
   - https://github.com/orgs/FerretDB/projects/2/views/1
   - There is "No Stage" mention of Change Streams as a wish sometime:
