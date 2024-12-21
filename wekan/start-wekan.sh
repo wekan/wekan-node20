@@ -2,7 +2,7 @@
 
 # If you want to restart even on crash, uncomment while and done lines.
 #while true; do
-      cd .build/bundle
+      cd ~/repos/wekan/.build/bundle
       #-------------------- REQUIRED SETTINGS START --------------------
       # WRITEABLE PATH REQUIRED TO EXISTS AND BE WRITABLE FOR ATTACHMENTS TO WORK
       export WRITABLE_PATH=..
@@ -566,5 +566,5 @@
       #node main.js
       #---------------------------------------------------------------------
       # & >> ../../wekan.log
-      cd ../..
+      cd ~/repos/ferretdb/wekan
 #done
