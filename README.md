@@ -13,6 +13,16 @@
   - There is "No Stage" mention of Change Streams as a wish sometime:
     - https://github.com/FerretDB/FerretDB/issues/175
 
+#### Optional: Deleting all Docker volumes etc data to cleanup
+
+```
+git clone https://github.com/wekan/docker-cleanup-volumes
+
+cd docker-cleanup-volumes
+
+./start.sh
+```
+
 #### 1) Starting this FerretDB/SQLite
 
 ```
