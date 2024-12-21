@@ -9,7 +9,7 @@
       #-----------------------------------------------------------------
       # MongoDB database URL required
       #export MONGO_URL=mongodb://127.0.0.1:27017/wekan
-      export MONGO_OPLOG_URL=mongodb://127.0.0.1:27017/local?replicaSet=rs0&authSource=admin
+      export MONGO_OPLOG_URL=mongodb://127.0.0.1:27017/local?replicaSet=rs0
       export MONGO_URL=mongodb://127.0.0.1:27017/wekan
       #-----------------------------------------------------------------
       # If port is 80, must change ROOT_URL to: http://YOUR-WEKAN-SERVER-IPv4-ADDRESS , like http://192.168.0.100

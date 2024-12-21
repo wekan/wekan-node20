@@ -1,8 +1,11 @@
 services:
 
   wekandb:
-    # Production FerretDB/SQLite image only has SQLite. Not PostgreSQL or bash.
-    image: ghcr.io/ferretdb/ferretdb
+    # Production FerretDB/SQLite images are old and crash, and have only SQLite. Not PostgreSQL or bash.
+    #image: ghcr.io/ferretdb/ferretdb
+    #image: ghcr.io/ferretdb/all-in-one
+    # Newest development image: https://github.com/ferretdb/FerretDB/pkgs/container/ferretdb-dev
+    image: ghcr.io/ferretdb/ferretdb-dev:main
     restart: on-failure
     ports:
       - 27017:27017
@@ -10,30 +13,26 @@ services:
       - wekan-tier
     environment:
       - DOCKER_DEFAULT_PLATFORM=linux/x86_64/v8
+      - FERRETDB_TELEMETRY=disable
       - FERRETDB_HANDLER=sqlite
       - FERRETDB_SQLITE_URL=file:/data/
       - FERRETDB_REPL_SET_NAME=rs0
-      - FERRETDB_TELEMETRY=disable
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./data:/data/ferretdb-sqlite
 
   # Development FerretDB image is used to create OpLog and then exit.
   wekandb-oplog-setup:
-    image: ghcr.io/ferretdb/all-in-one
+    image: ghcr.io/ferretdb/ferretdb-dev:main
     restart: no
     networks:
       - wekan-tier
     depends_on:
       - wekandb
-    entrypoint: [ "bash", "-c", "sleep 10 && /usr/bin/mongosh --host wekandb:27017 --eval 'use local;db.createCollection('oplog.rs', { capped: true, size: 536870912 });'"]
+    entrypoint: [ "bash", "-c", "sleep 10 && /usr/bin/mongosh --host 127.0.0.1:27017 --eval 'use local;db.createCollection('oplog.rs', { capped: true, size: 536870912 });'"]
 
 volumes:
-  wekan-files:
-    driver: local
   data:
-    driver: local
-  wekan-db-dump:
     driver: local
 
 networks:
