@@ -1,4 +1,136 @@
-## Description of this database connecting test
+## FerretDB
+
+Related:
+- OpLog: https://docs.ferretdb.io/configuration/oplog-support/
+  - https://github.com/FerretDB/FerretDB/issues/76
+- Achieve compatibility with WeKan
+  - https://github.com/FerretDB/FerretDB/issues/1752
+- Improve compatibility with real specific apps and libraries
+- High level Roadmap to end of Q4 2024:
+  - https://github.com/orgs/FerretDB/projects/2/views/1
+  - There is "No Stage" mention of Change Streams as a wish sometime:
+    - https://github.com/FerretDB/FerretDB/issues/175
+
+
+#### 1) Starting this FerretDB/SQLite with:
+
+´´´
+git clone https://github.com/wekan/wekan-node20
+
+cd wekan-node20
+
+docker compose up -d
+```
+
+#### 2) Manually create oplog collection:
+
+```
+mongosh
+
+use local
+
+db.createCollection('oplog.rs', { capped: true, size: 536870912 })
+```
+
+#### 3) Build wekan:
+
+```
+git clone https://github.com/wekan/wekan
+
+cd wekan
+
+./rebuild-wekan.sh
+
+1
+
+./rebuild-wekan.sh
+
+2
+
+./rebuild-wekan.sh
+
+3
+```
+
+#### 4) Edit start-wekan.sh have these settings for oplog:
+
+```
+cd .build/bundle
+
+export MONGO_OPLOG_URL=mongodb://127.0.0.1:27017/local?replicaSet=rs0&authSource=admin
+
+export MONGO_URL=mongodb://127.0.0.1:27017/wekan
+
+export ROOT_URL=http://localhost:2000
+
+export PORT=2000
+
+node main.js
+
+cd ..
+```
+
+#### 5) Start wekan bundle:
+
+```
+./start-wekan.sh
+```
+
+#### 6) Look that there is something at oplog:
+
+```
+mongosh
+
+use local
+
+db.oplog.rs.countDocuments()
+
+db.oplog.rs.find()
+```
+
+#### 7) Look what has been able to write to database:
+
+```
+mongosh
+
+use wekan
+
+show collections
+
+db.boards.countDocuments()
+
+db.boards.find()
+
+db.cards.find()
+```
+
+#### 8) Currently working is:
+
+- Registering new user at https://localhost:2000/sign-up
+- Login at https://localhost:2000/sign-in
+- Add new user at right top username / Admin Panel / People / People
+
+#### 9) Currently not working is:
+
+- Adding attachments related collections to GridFS
+- Adding new board, errors about matchElement and userId
+#    
+
+#### Later, try to fix to create oplog at start:
+
+docker-compose.yml
+```
+ferretdb-sqlite-setup:
+ image: ghcr.io/ferretdb/all-in-one
+ restart: no
+ depends_on:
+   - ferretdb-sqlite
+ entrypoint: [ "bash", "-c", "sleep 10 && /usr/bin/mongosh --host ferretdb-postgresql:27017 --eval 'use local;db.createCollection('oplog.rs', { capped: true, size: 536870912 });'"]
+```
+
+## Node.js, Bun and Deno tests
+
+#### Description of this database connecting test
 
 - main.js runs database connecting test to:
   - MongoDB 3.x
@@ -10,7 +142,7 @@
   - Not possible yet with Node.js, because Node.js can not yet include npm packages to executeable.
 - This test is to see, what works at each CPU/OS. This is only database connect test, not yet any other features.
 
-## Code differences between Node.js, Bun and Deno
+#### Code differences between Node.js, Bun and Deno
 
 - Only difference is, how to do imports. Other Javascript code is exactly same in Node.js 20, Bun and Deno.
 - Node.js and Bun use this syntax for imports at `main.js` https://github.com/wekan/wekan-node20/blob/main/main.js#L7-L9
@@ -29,7 +161,7 @@ import { MongoClient } from "mongodb";
 import { MongoClient as MongoClientLegacy } from "mongodb-legacy";
 ```
 
-## WeKan Node.js 20, Bun and Deno
+#### WeKan Node.js 20, Bun and Deno
 
 - SE = Single Executeable at https://github.com/wekan/wekan-node20/releases
 - Runs = Does run, but no Single Executeable
@@ -45,7 +177,7 @@ Windows amd64 | Runs | No | SE 324 MB | https://github.com/wekan/wekan/wiki/Offl
 Mac amd64 | Runs | No. "Your shell is running in Rosetta 2. Downloading bun for darwin-aarch64 instead" | SE 348 MB | https://github.com/wekan/wekan/wiki/Mac
 Mac arm64 | Runs | SE 49.9 MB | SE 345 MB | https://github.com/wekan/wekan/wiki/Mac
 
-## Trying to compile LLVM (for Zig and Bun) at s390x fails
+#### Trying to compile LLVM (for Zig and Bun) at s390x fails
 
 - There is no precompiled binaries of Zig and Bun https://github.com/oven-sh/bun/issues/2632
 - Trying: [Compile LLVM](https://github.com/ziglang/zig/wiki/How-to-build-LLVM,-libclang,-and-liblld-from-source#release), to [compile Zig](https://github.com/ziglang/zig/wiki/Building-Zig-From-Source#instructions), to [compile Bun](https://bun.sh/docs/project/development).
@@ -69,13 +201,13 @@ compilation terminated.
 ninja: build stopped: subcommand failed.
 ```
 
-## Trying to compile Deno for s390x fails
+#### Trying to compile Deno for s390x fails
 
 - There is no ninja_gn binaries for s390x https://github.com/denoland/ninja_gn_binaries
 - Rust ring (a crypto dependency) does not support s390x.
 - https://github.com/denoland/deno/issues/20212#issuecomment-1756663943
 
-## Database servers
+#### Database servers
 
 - FerretDB Linux amd64/armv7/arm64 https://github.com/ferretdb/FerretDB/pkgs/container/ferretdb
 - Some not checked yet, does it exist?
@@ -90,7 +222,7 @@ Windows amd64 | ? | Yes | ?
 Mac amd64 | ? | Yes | ?
 Mac arm64 | ? | Yes | ?
 
-## Database drivers at main.js
+#### Database drivers at main.js
 
 - MongoDB 3.x, to be compatible with WeKan Snap Stable migrations, and https://sandstorm.io MongoDB 3.0
 - MongoDB 6.x, to be compatible with newest Meteor
@@ -106,13 +238,13 @@ Mac arm64 | ? | Yes | ?
 - PostgreSQL
 - SQLite
 
-## Database drivers, maybe later
+#### Database drivers, maybe later
 
 - MySQL
 - MSSQL
 - Oracle
 
-## DAL and ORM
+#### DAL and ORM
 
 - DAL (Database Access Layer) and ORM (Object Relational Mapper)
 - Generating database queries from same syntax to many different database syntax

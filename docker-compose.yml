@@ -1,26 +1,121 @@
-version: '2'
-
 services:
 
-  ferretdb-postgresql:
-    image: ghcr.io/ferretdb/all-in-one
-    restart: on-failure
-    ports:
-      - 27010:27017
-    environment:
-      - DOCKER_DEFAULT_PLATFORM=linux/x86_64/v8
+#  ferretdb-postgresql:
+#    image: ghcr.io/ferretdb/all-in-one
+#    restart: on-failure
+#    ports:
+#      - 27010:27017
+#    environment:
+#      - DOCKER_DEFAULT_PLATFORM=linux/x86_64/v8
+#      - FERRETDB_REPL_SET_NAME=rs0
+#
+#  ferretdb-postgresql-setup:
+#    image: ghcr.io/ferretdb/all-in-one
+#    restart: no
+#    depends_on:
+#      - ferretdb-postgresql
+#    entrypoint: [ "bash", "-c", "sleep 10 && /usr/bin/mongosh --host ferretdb-postgresql:27010 --eval 'use local;db.createCollection('oplog.rs', { capped: true, size: 536870912 });'"]
 
   ferretdb-sqlite:
     image: ghcr.io/ferretdb/all-in-one
     restart: on-failure
     ports:
-      - 27011:27017
+      - 27017:27017
     environment:
       - FERRETDB_HANDLER=sqlite
       - FERRETDB_SQLITE_URL=file:/data/
       - DOCKER_DEFAULT_PLATFORM=linux/x86_64/v8
+      - FERRETDB_REPL_SET_NAME=rs0
     volumes:
       - ./data:/data/
+
+# Related:
+# - OpLog: https://docs.ferretdb.io/configuration/oplog-support/
+#   - https://github.com/FerretDB/FerretDB/issues/76
+# - Achieve compatibility with WeKan
+#   - https://github.com/FerretDB/FerretDB/issues/1752
+# - Improve compatibility with real specific apps and libraries
+# - High level Roadmap to end of Q4 2024:
+#   - https://github.com/orgs/FerretDB/projects/2/views/1
+#   - There is "No Stage" mention of Change Streams as a wish sometime:
+#       https://github.com/FerretDB/FerretDB/issues/175
+#
+#
+# 1. Starting this FerretDB/SQLite with:
+#
+#   git clone https://github.com/wekan/wekan-node20
+#   cd wekan-node20
+#   docker compose up -d
+#
+# 2. Manually create oplog collection:
+#
+#   mongosh
+#   use local
+#   db.createCollection('oplog.rs', { capped: true, size: 536870912 })
+#
+#
+# 3. Build wekan:
+#
+#    git clone https://github.com/wekan/wekan
+#    cd wekan
+#    ./rebuild-wekan.sh
+#    1
+#    ./rebuild-wekan.sh
+#    2
+#    ./rebuild-wekan.sh
+#    3
+#
+# 4. Edit start-wekan.sh have these settings for oplog:
+#
+#    cd .build/bundle
+#    export MONGO_OPLOG_URL=mongodb://127.0.0.1:27017/local?replicaSet=rs0&authSource=admin
+#    export MONGO_URL=mongodb://127.0.0.1:27017/wekan
+#    export ROOT_URL=http://localhost:2000
+#    export PORT=2000
+#    node main.js
+#    cd ..
+#
+# 5. Start wekan bundle:
+#
+#   ./start-wekan.sh
+#
+#
+# 6. Look that there is something at oplog:
+#
+#    mongosh
+#    use local
+#    db.oplog.rs.countDocuments()
+#    db.oplog.rs.find()
+#
+# 7. Look what has been able to write to database:
+#
+#    mongosh
+#    use wekan
+#    show collections
+#    db.boards.countDocuments()
+#    db.boards.find()
+#    db.cards.find()
+#
+# 8. Currently working is:
+#    - Registering new user at https://localhost:2000/sign-up
+#    - Login at https://localhost:2000/sign-in
+#    - Add new user at right top username / Admin Panel / People / People
+#
+# 9. Currently not working is:
+#    - Adding attachments related collections to GridFS
+#    - Adding new board, errors about matchElement and userId
+#    
+
+
+
+# NOT IN USE, may not work properly:
+#  ferretdb-sqlite-setup:
+#    image: ghcr.io/ferretdb/all-in-one
+#    restart: no
+#    depends_on:
+#      - ferretdb-sqlite
+#    entrypoint: [ "bash", "-c", "sleep 10 && /usr/bin/mongosh --host ferretdb-postgresql:27017 --eval 'use local;db.createCollection('oplog.rs', { capped: true, size: 536870912 });'"]
+
 
 volumes:
   data:
