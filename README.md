@@ -18,7 +18,7 @@
 ```
 git clone https://github.com/wekan/ferretdb
 
-cd ferretdb
+cd ferretdb/sqlite
 
 docker compose up -d
 ```
@@ -53,29 +53,33 @@ cd wekan
 3
 ```
 
-#### 4) Edit start-wekan.sh have these settings for OpLog
+#### 4) OpLog Settings
 
+These are at ~/repos/ferretdb/wekan/start-wekan.sh
 ```
-cd .build/bundle
+cd ~/repos/wekan/.build/bundle
 
-export MONGO_OPLOG_URL=mongodb://127.0.0.1:27017/local?replicaSet=rs0&authSource=admin
+export MONGO_OPLOG_URL=mongodb://127.0.0.1:27017/local?replicaSet=rs0
 
 export MONGO_URL=mongodb://127.0.0.1:27017/wekan
 
-export ROOT_URL=http://localhost:2000
+export ROOT_URL=http://localhost:4000
 
-export PORT=2000
+export PORT=4000
 
 node main.js
 
-cd ..
+cd ~/repos/ferretdb/wekan
 ```
 
 #### 5) Start WeKan bundle:
 
 ```
+cd ~/repos/ferretdb/wekan
+
 ./start-wekan.sh
 ```
+Web browser URL: http://localhost:4000
 
 #### 6) Look that there is something at OpLog:
 
