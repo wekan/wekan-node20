@@ -1,0 +1,30 @@
+services:
+  ferretdb:
+    image: ghcr.io/ferretdb/ferretdb
+    restart: on-failure
+    ports:
+      - 27017:27017
+    environment:
+      - DOCKER_DEFAULT_PLATFORM=linux/x86_64/v8
+      - FERRETDB_HANDLER=sqlite
+      - FERRETDB_SQLITE_URL=file:/data/
+      - FERRETDB_REPL_SET_NAME=rs0
+      - FERRETDB_TELEMETRY=disable
+    networks:
+      - wekan-tier
+    volumes:
+      - ./data:/data
+      - /etc/localtime:/etc/localtime:ro
+
+  ferretdb-oplog-setup:
+    image: ghcr.io/ferretdb/ferretdb
+    restart: no
+    networks:
+      - wekan-tier
+    depends_on:
+      - ferretdb
+    entrypoint: [ "mongosh mongo --host ferretdb:27017 --eval 'use local;db.createCollection('oplog.rs', { capped: true, size: 536870912 });'"]
+
+networks:
+  wekan-tier:
+    driver: bridge
