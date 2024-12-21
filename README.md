@@ -15,7 +15,7 @@ Related:
 
 #### 1) Starting this FerretDB/SQLite with:
 
-´´´
+```
 git clone https://github.com/wekan/wekan-node20
 
 cd wekan-node20
