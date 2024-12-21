@@ -1,0 +1,44 @@
+services:
+
+  wekandb:
+    image: ghcr.io/ferretdb/all-in-one
+    restart: on-failure
+    # Not opening port to outside:
+    ports:
+      - 27017:27017
+    # Instead, expose port at internal Docker network:
+    #expose:
+    #  - 27017
+    networks:
+      - wekan-tier
+    environment:
+      - DOCKER_DEFAULT_PLATFORM=linux/x86_64/v8
+      - FERRETDB_HANDLER=sqlite
+      - FERRETDB_SQLITE_URL=file:/data/
+      - FERRETDB_REPL_SET_NAME=rs0
+      - FERRETDB_TELEMETRY=disable
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./data:/data/ferretdb-sqlite
+      - wekan-db-dump:/data/ferretdb-sqlite-dump
+
+  wekandb-oplog-setup:
+    image: ghcr.io/ferretdb/all-in-one
+    restart: no
+    networks:
+      - wekan-tier
+    depends_on:
+      - wekandb
+    entrypoint: [ "bash", "-c", "sleep 10 && /usr/bin/mongosh --host wekandb:27017 --eval 'use local;db.createCollection('oplog.rs', { capped: true, size: 536870912 });'"]
+
+volumes:
+  wekan-files:
+    driver: local
+  data:
+    driver: local
+  wekan-db-dump:
+    driver: local
+
+networks:
+  wekan-tier:
+    driver: bridge

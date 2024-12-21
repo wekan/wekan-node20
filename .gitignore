@@ -41,5 +41,6 @@ ehthumbs.db
 /helm/wekan/charts
 
 # SQLite data
-
-/data/*
+data/
+sqlite/data/
+postgresql/data/
