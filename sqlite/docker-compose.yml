@@ -3,12 +3,8 @@ services:
   wekandb:
     image: ghcr.io/ferretdb/all-in-one
     restart: on-failure
-    # Not opening port to outside:
     ports:
       - 27017:27017
-    # Instead, expose port at internal Docker network:
-    #expose:
-    #  - 27017
     networks:
       - wekan-tier
     environment:
