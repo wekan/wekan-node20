@@ -43,7 +43,7 @@ use local
 db.createCollection('oplog.rs', { capped: true, size: 536870912 })
 ```
 
-#### 3) Build WeKan:
+#### 3) Build WeKan
 
 ```
 git clone https://github.com/wekan/wekan
@@ -82,7 +82,7 @@ node main.js
 cd ~/repos/ferretdb/wekan
 ```
 
-#### 5) Start WeKan bundle:
+#### 5) Start WeKan bundle
 
 ```
 cd ~/repos/ferretdb/wekan
@@ -91,7 +91,7 @@ cd ~/repos/ferretdb/wekan
 ```
 Web browser URL: http://localhost:4000
 
-#### 6) Look that there is something at OpLog:
+#### 6) Look that there is something at OpLog
 
 ```
 mongosh
@@ -103,7 +103,7 @@ db.oplog.rs.countDocuments()
 db.oplog.rs.find()
 ```
 
-#### 7) Look what has been able to write to database:
+#### 7) Look what has been able to write to database
 
 ```
 mongosh
