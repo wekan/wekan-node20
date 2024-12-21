@@ -1,7 +1,8 @@
 services:
 
   wekandb:
-    image: ghcr.io/ferretdb/all-in-one
+    # Production FerretDB/SQLite image only has SQLite. Not PostgreSQL or bash.
+    image: ghcr.io/ferretdb/ferretdb
     restart: on-failure
     ports:
       - 27017:27017
@@ -16,8 +17,8 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./data:/data/ferretdb-sqlite
-      - wekan-db-dump:/data/ferretdb-sqlite-dump
 
+  # Development FerretDB image is used to create OpLog and then exit.
   wekandb-oplog-setup:
     image: ghcr.io/ferretdb/all-in-one
     restart: no
