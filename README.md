@@ -1,16 +1,16 @@
 ## FerretDB
 
-- OpLog: https://docs.ferretdb.io/configuration/oplog-support/
+- Meteor Forum post https://forums.meteor.com/t/ferretdb-1-18-now-has-oplog-support-trying-replace-mongodb-6-x-with-ferretdb-postgresql-or-ferretdb-sqlite/61092/4
+- FerretDB OpLog Support: https://docs.ferretdb.io/configuration/oplog-support/
   - https://github.com/FerretDB/FerretDB/issues/76
-- Achieve compatibility with WeKan
+- FerretDB: Achieve compatibility with WeKan
   - https://github.com/FerretDB/FerretDB/issues/1752
-- Improve compatibility with real specific apps and libraries
+- FerretDB: Improve compatibility with real specific apps and libraries
   - https://github.com/FerretDB/FerretDB/issues/5 
-- High level Roadmap to end of Q4 2024:
+- FerretDB: High level Roadmap to end of Q4 2024:
   - https://github.com/orgs/FerretDB/projects/2/views/1
   - There is "No Stage" mention of Change Streams as a wish sometime:
     - https://github.com/FerretDB/FerretDB/issues/175
-
 
 #### 1) Starting this FerretDB/SQLite
 
