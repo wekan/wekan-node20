@@ -1,6 +1,5 @@
 ## FerretDB
 
-Related:
 - OpLog: https://docs.ferretdb.io/configuration/oplog-support/
   - https://github.com/FerretDB/FerretDB/issues/76
 - Achieve compatibility with WeKan
