@@ -1,6 +1,7 @@
 ## FerretDB
 
 - Meteor Forum post https://forums.meteor.com/t/ferretdb-1-18-now-has-oplog-support-trying-replace-mongodb-6-x-with-ferretdb-postgresql-or-ferretdb-sqlite/61092/4
+- FerretDB known differences: https://docs.ferretdb.io/diff/
 - FerretDB OpLog Support: https://docs.ferretdb.io/configuration/oplog-support/
   - https://github.com/FerretDB/FerretDB/issues/76
 - FerretDB: Achieve compatibility with WeKan
